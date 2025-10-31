@@ -1,0 +1,560 @@
+DEBUG - 2025-07-31 03:18:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:18:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:18:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:18:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:29:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:29:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:29:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:30:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:30:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 03:37:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 04:07:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 04:07:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 05:30:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 05:30:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 06:29:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 06:29:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 06:29:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 06:29:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-31 06:29:36 --> DEBUG SQL Riwayat: SELECT `berita_acara`.`id`, `berita_acara`.`no_ba`, `berita_acara`.`tgl_ba`, `es2`.`kode`, `es3`.`nama_es3`, (SELECT COUNT(*) FROM item_inaktif WHERE item_inaktif.id_ba = berita_acara.id) as jumlah_item
+FROM `berita_acara`
+LEFT JOIN `users` ON `users`.`id` = `berita_acara`.`id_user`
+LEFT JOIN `hak_fitur` ON `hak_fitur`.`id_user` = `users`.`id`
+LEFT JOIN `unit_kerja_es2` AS `es2` ON `es2`.`id` = `hak_fitur`.`id_es2`
+LEFT JOIN `unit_kerja_es3` AS `es3` ON `es3`.`id` = `hak_fitur`.`id_es3`
+WHERE EXISTS (SELECT 1 FROM item_inaktif WHERE item_inaktif.id_ba = `berita_acara`.`id`)
+ORDER BY `berita_acara`.`tgl_ba` DESC
+ LIMIT 10
+DEBUG - 2025-07-31 06:29:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 06:30:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 06:31:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-07-31 06:31:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 98.
+ 1 APPPATH\Controllers\Laporan.php(98): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(111): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 99.
+ 1 APPPATH\Controllers\Laporan.php(99): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(111): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 98.
+ 1 APPPATH\Controllers\Laporan.php(98): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(111): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:35 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 99.
+ 1 APPPATH\Controllers\Laporan.php(99): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(111): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:31:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-07-31 06:31:45 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 98.
+ 1 APPPATH\Controllers\Laporan.php(98): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(177): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportPdf()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:45 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 99.
+ 1 APPPATH\Controllers\Laporan.php(99): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(177): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportPdf()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:45 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 98.
+ 1 APPPATH\Controllers\Laporan.php(98): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(177): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportPdf()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:45 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 99.
+ 1 APPPATH\Controllers\Laporan.php(99): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(177): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportPdf()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:31:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-07-31 06:31:48 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 98.
+ 1 APPPATH\Controllers\Laporan.php(98): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(122): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:48 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 99.
+ 1 APPPATH\Controllers\Laporan.php(99): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(122): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:48 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 98.
+ 1 APPPATH\Controllers\Laporan.php(98): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(122): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:31:48 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 99.
+ 1 APPPATH\Controllers\Laporan.php(99): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(122): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-31 06:31:48 --> ErrorException: Undefined variable $nama_es2
+[Method: GET, Route: laporan/excel]
+in APPPATH\Controllers\Laporan.php on line 129.
+ 1 APPPATH\Controllers\Laporan.php(129): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $nama_es2', 'C:\\laragon\\www\\beta_project\\app\\Controllers\\Laporan.php', 129)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:39:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-07-31 06:39:37 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 93.
+ 1 APPPATH\Controllers\Laporan.php(93): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(123): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:39:37 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 94.
+ 1 APPPATH\Controllers\Laporan.php(94): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(123): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:39:37 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 93.
+ 1 APPPATH\Controllers\Laporan.php(93): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(123): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:39:37 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 94.
+ 1 APPPATH\Controllers\Laporan.php(94): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(123): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportExcel()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:46:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-07-31 06:46:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 93.
+ 1 APPPATH\Controllers\Laporan.php(93): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(109): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:46:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 94.
+ 1 APPPATH\Controllers\Laporan.php(94): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(109): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:46:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 93.
+ 1 APPPATH\Controllers\Laporan.php(93): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(109): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:46:59 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 94.
+ 1 APPPATH\Controllers\Laporan.php(94): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(109): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-07-31 06:47:02 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 93.
+ 1 APPPATH\Controllers\Laporan.php(93): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(109): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:47:02 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 94.
+ 1 APPPATH\Controllers\Laporan.php(94): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(109): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:47:02 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 93.
+ 1 APPPATH\Controllers\Laporan.php(93): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(109): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:47:02 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 94.
+ 1 APPPATH\Controllers\Laporan.php(94): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(109): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:47:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-31 06:47:04 --> mysqli_sql_exception: Unknown column 'item_inaktif.lokasi_simpan' in 'field list' in C:\laragon\www\beta_project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\beta_project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `berkas_...', 0)
+#1 C:\laragon\www\beta_project\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `berkas_...')
+#2 C:\laragon\www\beta_project\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `berkas_...')
+#3 C:\laragon\www\beta_project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `berkas_...', Array, false)
+#4 C:\laragon\www\beta_project\app\Controllers\LaporanInaktif.php(66): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\beta_project\app\Controllers\LaporanInaktif.php(109): App\Controllers\LaporanInaktif->getLaporanData()
+#6 C:\laragon\www\beta_project\system\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+#7 C:\laragon\www\beta_project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+#8 C:\laragon\www\beta_project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\beta_project\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\beta_project\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\beta_project\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-07-31 06:47:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'item_inaktif.lokasi_simpan' in 'field list'
+[Method: GET, Route: laporan-inaktif]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC', [], false)
+ 2 APPPATH\Controllers\LaporanInaktif.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\LaporanInaktif.php(109): App\Controllers\LaporanInaktif->getLaporanData()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-31 06:47:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'item_inaktif.lokasi_simpan' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC', [], false)
+ 4 APPPATH\Controllers\LaporanInaktif.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\LaporanInaktif.php(109): App\Controllers\LaporanInaktif->getLaporanData()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-31 06:47:04 --> [Caused by] mysqli_sql_exception: Unknown column 'item_inaktif.lokasi_simpan' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC', [], false)
+ 5 APPPATH\Controllers\LaporanInaktif.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\LaporanInaktif.php(109): App\Controllers\LaporanInaktif->getLaporanData()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:47:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-31 06:47:13 --> mysqli_sql_exception: Unknown column 'item_inaktif.lokasi_simpan' in 'field list' in C:\laragon\www\beta_project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\beta_project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `berkas_...', 0)
+#1 C:\laragon\www\beta_project\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `berkas_...')
+#2 C:\laragon\www\beta_project\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `berkas_...')
+#3 C:\laragon\www\beta_project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `berkas_...', Array, false)
+#4 C:\laragon\www\beta_project\app\Controllers\LaporanInaktif.php(66): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\beta_project\app\Controllers\LaporanInaktif.php(109): App\Controllers\LaporanInaktif->getLaporanData()
+#6 C:\laragon\www\beta_project\system\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+#7 C:\laragon\www\beta_project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+#8 C:\laragon\www\beta_project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\beta_project\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\beta_project\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\beta_project\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-07-31 06:47:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'item_inaktif.lokasi_simpan' in 'field list'
+[Method: GET, Route: laporan-inaktif]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC', [], false)
+ 2 APPPATH\Controllers\LaporanInaktif.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\LaporanInaktif.php(109): App\Controllers\LaporanInaktif->getLaporanData()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-31 06:47:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'item_inaktif.lokasi_simpan' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC', [], false)
+ 4 APPPATH\Controllers\LaporanInaktif.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\LaporanInaktif.php(109): App\Controllers\LaporanInaktif->getLaporanData()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-31 06:47:13 --> [Caused by] mysqli_sql_exception: Unknown column 'item_inaktif.lokasi_simpan' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `berkas_inaktif`.`id` as `berkas_id`, `es2`.`nama_es2`, `es2`.`kode` as `kode_es2`, `es3`.`kode` as `kode_es3`, `berkas_inaktif`.`no_berkas`, `klasifikasi`.`kode` as `kode_klasifikasi`, `berkas_inaktif`.`nama_berkas`, `berkas_inaktif`.`thn_item_awal`, `berkas_inaktif`.`thn_item_akhir`, `item_inaktif`.`no_dokumen`, `item_inaktif`.`judul_dokumen`, `item_inaktif`.`tgl_dokumen`, `item_inaktif`.`tk_perkembangan`, `item_inaktif`.`media_simpan`, `item_inaktif`.`jumlah`, `item_inaktif`.`status_arsip`, `item_inaktif`.`lokasi_simpan`, `item_inaktif`.`nama_file`, `item_inaktif`.`nama_folder`, `item_inaktif`.`nama_link`, `berkas_inaktif`.`no_box`, `klasifikasi`.`umur_aktif`, `klasifikasi`.`nasib_akhir`, `klasifikasi`.`skkad`
+FROM `berkas_inaktif`
+JOIN `item_inaktif` ON `item_inaktif`.`id_berkas` = `berkas_inaktif`.`id`
+LEFT JOIN `klasifikasi` ON `klasifikasi`.`id` = `item_inaktif`.`id_klasifikasi`
+LEFT JOIN `unit_kerja_es3` as `es3` ON `es3`.`id` = `item_inaktif`.`id_es3`
+LEFT JOIN `unit_kerja_es2` as `es2` ON `es2`.`id` = `es3`.`id_es2`
+ORDER BY `berkas_inaktif`.`id` ASC, `item_inaktif`.`tgl_dokumen` ASC', [], false)
+ 5 APPPATH\Controllers\LaporanInaktif.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\LaporanInaktif.php(109): App\Controllers\LaporanInaktif->getLaporanData()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:47:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 06:48:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 06:49:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-07-31 06:49:29 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 93.
+ 1 APPPATH\Controllers\Laporan.php(93): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(196): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportPdf()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:49:29 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 94.
+ 1 APPPATH\Controllers\Laporan.php(94): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(196): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportPdf()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:49:29 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 93.
+ 1 APPPATH\Controllers\Laporan.php(93): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(196): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportPdf()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 06:49:29 --> [DEPRECATED] ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Controllers\Laporan.php on line 94.
+ 1 APPPATH\Controllers\Laporan.php(94): ucfirst(null)
+ 2 APPPATH\Controllers\Laporan.php(196): App\Controllers\Laporan->getLaporanData()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Laporan->exportPdf()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:50:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 06:50:05 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "laporan-inaktif/index.php"
+[Method: GET, Route: laporan-inaktif]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('laporan-inaktif/index.php')
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('laporan-inaktif/index', [], true)
+ 3 APPPATH\Controllers\LaporanInaktif.php(115): view('laporan-inaktif/index', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 06:53:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 07:00:15 --> Error: Call to undefined function auth_check()
+[Method: GET, Route: laporan-inaktif]
+in APPPATH\Views\layout\sidebar.php on line 54.
+ 1 SYSTEMPATH\View\View.php(224): include()
+ 2 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('layout/sidebar', null, true)
+ 4 APPPATH\Views\layout\template.php(37): CodeIgniter\View\View->include('layout/sidebar')
+ 5 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\beta_project\\app\\Views\\layout\\template.php')
+ 6 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH\View\View.php(240): CodeIgniter\View\View->render('layout/template', [], true)
+ 8 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('laporan-inaktif/index', [], true)
+ 9 APPPATH\Controllers\LaporanInaktif.php(115): view('laporan-inaktif/index', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LaporanInaktif->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LaporanInaktif))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-07-31 07:05:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:05:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:05:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:05:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:05:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:14:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:14:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:14:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:56:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:56:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-07-31 07:56:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -1,0 +1,407 @@
+/* Custom Bootstrap Color Palette */
+:root {
+    /* Main Theme Colors */
+    --bs-primary: #3498db;
+    /* Soft Blue */
+    --bs-secondary: #95a5a6;
+    /* Muted Gray */
+    --bs-success: #2ecc71;
+    /* Emerald Green */
+    --bs-info: #34ace0;
+    /* Light Ocean Blue */
+    --bs-warning: #f39c12;
+    /* Orange Peel */
+    --bs-danger: #e74c3c;
+    /* Alizarin Red */
+    --bs-light: #ecf0f1;
+    /* Clouds White */
+    --bs-dark: #2c3e50;
+    /* Midnight Blue */
+
+    /* Custom Variables for Dashboard Layout */
+    --primary-color: var(--bs-primary);
+    /* Use Bootstrap primary for main accents */
+    --secondary-color-bg: #eaf6fd;
+    /* Lighter background for hover states */
+    --background-color: #f8f9fa;
+    /* Slightly off-white background */
+    --text-color: var(--bs-dark);
+    /* Dark text */
+    --border-color: #e0e0e0;
+    /* Light grey border */
+    --white: #fff;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    --sidebar-width: 250px;
+    --navbar-height: 70px;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Base Styles */
+/* Menggunakan langsung variabel Bootstrap, atau custom jika perlu */
+.primary-bg {
+    background-color: var(--primary-color) !important;
+}
+
+.primary-text {
+    color: var(--primary-color) !important;
+}
+
+.custom-text-secondary {
+    color: var(--bs-secondary) !important;
+}
+
+/* Ganti second-text */
+.text-custom-danger {
+    color: var(--bs-danger) !important;
+}
+
+/* Ganti text-danger */
+
+.text-muted {
+    color: var(--bs-secondary) !important;
+}
+
+/* Menggunakan secondary untuk muted */
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem var(--shadow-light) !important;
+}
+
+.rounded-pill {
+    border-radius: 50rem !important;
+}
+
+.rounded-3 {
+    border-radius: 0.5rem !important;
+}
+
+.border {
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Wrapper and Sidebar */
+#wrapper {
+    overflow: hidden;
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: var(--background-color);
+}
+
+.sidebar-wrapper {
+    width: var(--sidebar-width);
+    background-color: var(--white);
+    border-radius: 1rem;
+    box-shadow: 0 .25rem .5rem var(--shadow-light);
+    transition: margin 0.3s ease-in-out, transform 0.3s ease-in-out;
+    position: fixed;
+    height: calc(100vh - 2rem);
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/* Scrollbar Styling for Sidebar */
+.sidebar-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+    background: var(--bs-light);
+    border-radius: 10px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+
+#page-content-wrapper {
+    margin-left: calc(var(--sidebar-width) + 2rem);
+    width: calc(100% - var(--sidebar-width) - 2rem);
+    transition: margin 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* Default state: sidebar is shown (toggled class removed) */
+#wrapper.toggled .sidebar-wrapper {
+    margin-left: calc(-1 * var(--sidebar-width) - 1rem);
+    transform: translateX(0);
+}
+
+#wrapper:not(.toggled) #page-content-wrapper {
+    /* If sidebar is NOT toggled (i.e., shown) */
+    margin-left: calc(var(--sidebar-width) + 2rem);
+    width: calc(100% - var(--sidebar-width) - 2rem);
+}
+
+#wrapper.toggled #page-content-wrapper {
+    /* If sidebar IS toggled (i.e., hidden) */
+    margin-left: 1rem;
+    width: calc(100% - 2rem);
+}
+
+
+/* Sidebar Heading */
+.sidebar-heading {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+/* Sidebar List Group */
+.list-group-item {
+    padding: 1rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.list-group-item i {
+    font-size: 1.1rem;
+}
+
+.list-group-item:hover:not(.active),
+.list-group-item:focus:not(.active) {
+    background-color: var(--secondary-color-bg);
+    /* Menggunakan secondary-color-bg untuk hover */
+    color: var(--primary-color);
+}
+
+.list-group-item.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* Submenu Styling */
+.list-group-submenu {
+    padding-left: 0;
+    margin-bottom: 0.25rem;
+}
+
+.list-group-submenu .list-group-item {
+    padding-left: 2.5rem;
+    font-size: 0.95rem;
+    border-left: 3px solid transparent;
+}
+
+.list-group-submenu .list-group-item:hover,
+.list-group-submenu .list-group-item.active {
+    background-color: var(--secondary-color-bg);
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.list-group-item .toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.list-group-item[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+}
+
+
+.list-group-item.text-custom-danger:hover {
+    background-color: rgba(var(--bs-danger-rgb), 0.1);
+    /* Menggunakan variabel BS untuk rgba */
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--white) !important;
+    border: 1px solid var(--border-color);
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+}
+
+.navbar .toggle-btn {
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: color 0.2s ease;
+}
+
+.navbar .toggle-btn:hover {
+    color: var(--text-color);
+}
+
+.navbar .nav-link {
+    color: var(--text-color);
+}
+
+.navbar .dropdown-menu {
+    border: 1px solid var(--border-color);
+    box-shadow: 0 .125rem .25rem var(--shadow-light);
+    border-radius: 0.5rem;
+}
+
+.navbar .dropdown-item {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: var(--secondary-color-bg);
+    color: var(--primary-color);
+}
+
+/* Dashboard Cards */
+.p-3.bg-white {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: var(--white);
+}
+
+.p-3.bg-white:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.p-3.bg-white h3,
+.p-3.bg-white p {
+    margin-bottom: 0;
+}
+
+/* Table */
+.table-responsive .bg-white {
+    border: none;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead {
+    background-color: var(--background-color);
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-color: var(--border-color);
+}
+
+.table th {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+
+
+/* Select2 customization */
+/* Menggunakan select2-bootstrap-5-theme.min.css, jadi hanya perlu override sedikit jika perlu */
+.select2-container--bootstrap5 .select2-selection {
+    /* border-color: var(--border-color) !important; */
+    /* Theme sudah handle ini */
+    /* border-radius: 0.375rem !important; */
+    /* height: calc(1.5em + .75rem + 2px) !important; */
+    /* padding: 0.375rem 0.75rem !important; */
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    /* Add transition */
+}
+
+.select2-container--bootstrap5.select2-container--focus .select2-selection,
+.select2-container--bootstrap5.select2-container--open .select2-selection {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25) !important;
+}
+
+.select2-container--bootstrap5 .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--secondary-color-bg) !important;
+    color: var(--primary-color) !important;
+}
+
+.select2-container--bootstrap5 .select2-results__option[aria-selected="true"] {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+}
+
+/* Badge colors using new custom Bootstrap variables */
+.badge.bg-custom-warning {
+    background-color: var(--bs-warning) !important;
+}
+
+.badge.bg-custom-success {
+    background-color: var(--bs-success) !important;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    #wrapper {
+        padding: 0;
+    }
+
+    .sidebar-wrapper {
+        width: var(--sidebar-width);
+        height: 100vh;
+        top: 0;
+        left: 0;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+    }
+
+    #page-content-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Default state: sidebar is hidden (toggled class removed) */
+    #wrapper:not(.toggled) .sidebar-wrapper {
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+    }
+
+    #wrapper:not(.toggled) #page-content-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled .sidebar-wrapper {
+        transform: translateX(0);
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        margin-left: 0;
+        /* Keep content at 0, overlay handles interaction */
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 990;
+        display: none;
+        cursor: pointer;
+    }
+
+    .navbar.rounded-pill {
+        border-radius: 0 !important;
+    }
+}

@@ -1,0 +1,29 @@
+// public/scss/_variables.scss
+
+// 1. Definisikan palet warna kustom Anda
+$theme-orange: #F17142;
+$theme-purple-deep: #6F2FE5;
+$theme-purple-light: #9929EA;
+$theme-pink: #F96167;
+$theme-teal: #318AA8;
+
+// 2. Timpa variabel warna default Bootstrap
+$primary: $theme-orange;
+$secondary: $theme-purple-light;
+$success: $theme-purple-deep;
+$warning: $theme-orange; // Sama dengan primary
+$danger: $theme-pink;
+$info: $theme-teal;
+
+// 3. (Opsional) Sesuaikan warna teks untuk kontras yang lebih baik
+// Bootstrap cukup pintar, tapi Anda bisa memaksa warna teks jika perlu.
+// Contoh: $primary-text-emphasis: #000;
+
+// 4. (Opsional) Sesuaikan warna link
+$link-color: $primary;
+$link-hover-color: darken($link-color, 15%);
+
+// 5. (Opsional) Kustomisasi lain
+$border-radius: .5rem; // Membuat sudut lebih tumpul
+$border-radius-lg: .75rem;
+$border-radius-sm: .4rem;
