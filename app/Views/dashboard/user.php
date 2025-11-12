@@ -26,7 +26,7 @@
 
             <!-- Widget 1.1: Total Item Aktif -->
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card shadow-sm border-0 h-100 bg-white">
+                <div class="card shadow border-0 h-100 bg-white">
                     <div class="card-body p-4 d-flex align-items-center">
                         <div class="icon-circle soft-primary"><i class="fas fa-file-alt fa-lg"></i></div>
                         <div>
@@ -39,7 +39,7 @@
 
             <!-- Widget 1.2: Total Berkas Aktif -->
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card shadow-sm border-0 h-100 bg-white">
+                <div class="card shadow border-0 h-100 bg-white">
                     <div class="card-body p-4 d-flex align-items-center">
                         <div class="icon-circle soft-success"><i class="fas fa-folder fa-lg"></i></div>
                         <div>
@@ -83,7 +83,7 @@
 
             <!-- Widget 2.1: Total Item Inaktif -->
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card shadow-sm border-0 h-100 bg-white">
+                <div class="card shadow border-0 h-100 bg-white">
                     <div class="card-body p-4 d-flex align-items-center">
                         <div class="icon-circle soft-info"><i class="fas fa-history fa-lg"></i></div>
                         <div>

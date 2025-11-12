@@ -29,7 +29,7 @@ class Admin implements FilterInterface
         $roleJabatan = session()->get('role_jabatan ');
 
         // Izinkan akses jika role adalah 'superadmin' atau 'admin'
-        if ($userRole === 'superadmin' || $userRole === 'admin' || $roleJabatan === 'arsiparis') {
+        if ($userRole === 'superadmin' || $userRole ==='admin' || $userRole === 'manager' || $roleJabatan === 'arsiparis') {
             return; // Lanjutkan request
         }
 

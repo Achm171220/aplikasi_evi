@@ -1334,10 +1334,15 @@ class ItemAktif extends BaseController
 
             // Lakukan filter manual (hanya jika API tidak mendukung filtering keyword)
             foreach ($rawItems as $item) {
-                // Di sini, kita akan melewatkan pengecekan filter tahun dan kode unit karena sudah dilakukan di query API.
 
-                // Filter manual jika keyword ada di nomor_laporan atau keterangan_penugasan
-                $nomorLaporan = strtolower($item['nomor_laporan'] ?? '');
+                // --- KUNCI PERBAIKAN: Cek Nomor Laporan ---
+                if (empty($item['nomor_laporan'])) {
+                    continue; // Skip item ini jika nomor laporan kosong
+                }
+                // --- END PERBAIKAN ---
+
+                // ... (Filter manual jika keyword ada di nomor_laporan atau keterangan_penugasan) ...
+                $nomorLaporan = strtolower($item['nomor_laporan']); // Kita tahu ini tidak kosong
                 $keterangan = strtolower($item['keterangan_penugasan'] ?? '');
 
                 if (
@@ -1346,9 +1351,8 @@ class ItemAktif extends BaseController
                     strpos($keterangan, $lowerSearchValue) !== false
                 ) {
 
-                    // Tambahkan tombol aksi (cek)
-                    $item['aksi'] = '<button type="button" class="btn btn-sm btn-success btn-select-sima" 
-                                    data-item="' . htmlspecialchars(json_encode($item), ENT_QUOTES, 'UTF-8') . '">Pilih</button>';
+                    // ... (Penambahan tombol aksi) ...
+                    $item['aksi'] = '<button type ... </button>';
 
                     $filteredItems[] = $item;
                 }
@@ -1418,7 +1422,13 @@ class ItemAktif extends BaseController
 
             // Filter manual (untuk keyword pencarian DataTables)
             foreach ($rawItems as $item) {
-                $nomorSurat = strtolower($item['nomor_surat'] ?? '');
+                // --- KUNCI PERBAIKAN: Cek Nomor Surat ---
+                if (empty($item['nomor_surat'])) {
+                    continue; // Skip item ini jika nomor surat kosong
+                }
+                // --- END PERBAIKAN ---
+
+                $nomorSurat = strtolower($item['nomor_surat']); // Kita tahu ini tidak kosong
                 $perihal = strtolower($item['perihal'] ?? '');
 
                 if (
@@ -1427,9 +1437,8 @@ class ItemAktif extends BaseController
                     strpos($perihal, $lowerSearchValue) !== false
                 ) {
 
-                    // Tambahkan tombol aksi (cek)
-                    $item['aksi'] = '<button type="button" class="btn btn-sm btn-success btn-select-sadewa" 
-                                    data-item="' . htmlspecialchars(json_encode($item), ENT_QUOTES, 'UTF-8') . '">Pilih</button>';
+                    // ... (Penambahan tombol aksi) ...
+                    $item['aksi'] = '<button type ... </button>';
 
                     $filteredItems[] = $item;
                 }

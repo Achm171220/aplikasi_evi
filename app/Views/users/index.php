@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0 text-gray-800"><?= $title ?></h1>
-        <?php if (session()->get('role_access') === 'superadmin'): // Hanya Superadmin yang bisa melihat tombol ini 
+        <?php if (session()->get('role_access') === 'superadmin' ): // Hanya Superadmin yang bisa melihat tombol ini 
         ?>
             <div class="btn-group">
                 <a href="<?= site_url('users/new') ?>" class="btn btn-primary">
@@ -18,7 +18,7 @@
                     <i class="bi bi-download"></i> Ekspor Excel
                 </a>
             </div>
-        <?php elseif (session()->get('role_access') === 'admin'): // Admin hanya bisa tambah dan import 
+        <?php elseif (session()->get('role_access') === 'admin'|| session()->get('role_access') === 'manager'): // Admin hanya bisa tambah dan import 
         ?>
             <div class="btn-group">
                 <a href="<?= site_url('users/new') ?>" class="btn btn-primary">

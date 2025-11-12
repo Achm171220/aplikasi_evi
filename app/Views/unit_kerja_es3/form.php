@@ -197,35 +197,51 @@
         const isSuperAdmin = <?= json_encode($isSuperAdmin) ?>;
         const prefillEs1 = '<?= $prefillEs1 ?>';
         const prefillEs2 = '<?= $prefillEs2 ?>';
-        const kodeLengkap = '<?= old('kode', $unitKerjaEs3['kode'] ?? '') ?>';
+        const kodeLengkap = '<?= old('kode', $unitKerjaEs3['kode'] ?? '') ?>'; // Kode lengkap dari DB
 
-        if (isSuperAdmin) {
-            if (prefillEs1) {
-                loadEs2(prefillEs1, prefillEs2);
+        function setSuffix(kodeLengkap, prefixText) {
+            if (kodeLengkap && prefixText && prefixText !== '-') {
+                // Hapus prefix dari kode lengkap untuk mendapatkan suffix
+                const suffix = kodeLengkap.replace(prefixText, '');
+                kodeSuffixInput.val(suffix);
             }
-        } else {
-            // Untuk Admin, dropdown terkunci. Isi Es2 dari PHP dan aktifkan.
+            kodeLengkapInput.val(kodeLengkap);
+            updateKodePrefix(); // Panggil ini terakhir untuk memastikan tampilan kode benar
+        }
+
+        // 1. Logika untuk Admin (Terisi Otomatis)
+        if (!isSuperAdmin) {
             const es2PrefillData = <?= json_encode($es2_prefill ?? null) ?>;
             if (es2PrefillData) {
+                // Langsung set data map dan trigger change
                 es2Select.html('');
                 es2DataMap[es2PrefillData.id] = es2PrefillData.kode;
                 es2Select.append(new Option(es2PrefillData.nama_es2, es2PrefillData.id));
                 es2Select.val(es2PrefillData.id).trigger('change');
-                // Dropdown tetap disabled sesuai HTML
+
+                // Set suffix secara langsung karena data ES2 sudah tersedia
+                const prefixText = es2PrefillData.kode + '-';
+                setSuffix(kodeLengkap, prefixText);
             }
         }
+        // 2. Logika untuk Superadmin (Membutuhkan AJAX)
+        else if (prefillEs1) {
+            // Kita butuh AJAX loadEs2 selesai dulu untuk mengetahui kode prefix
+            loadEs2(prefillEs1, prefillEs2);
 
-        // Set suffix kode untuk mode edit setelah AJAX selesai
-        if (kodeLengkap) {
+            // Tunggu hingga AJAX selesai memuat ES2 dan kode prefix sudah terisi
+            // Kita gunakan .one('ajaxStop') yang lebih aman untuk menunggu AJAX selesai
             $(document).one('ajaxStop', function() {
-                const prefix = kodePrefixSpan.text();
-                if (prefix !== '-') {
-                    const suffix = kodeLengkap.replace(prefix, '');
-                    kodeSuffixInput.val(suffix);
-                    kodeLengkapInput.val(kodeLengkap);
+                const prefixText = kodePrefixSpan.text();
+                // Pastikan ES2 sudah terpilih sebelum memanggil setSuffix
+                if (es2Select.val() && prefixText !== '-') {
+                    setSuffix(kodeLengkap, prefixText);
                 }
             });
         }
+
+        // Panggil updateKodeLengkap setelah semua selesai (untuk memastikan validasi kode unik berjalan)
+        updateKodeLengkap();
     });
 </script>
 <?= $this->endSection() ?>

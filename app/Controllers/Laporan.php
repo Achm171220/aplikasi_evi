@@ -186,7 +186,6 @@ class Laporan extends BaseController
                 // Jika elektronik: dasar_catat | nama_link
                 $lokasiSimpanParts = array_filter([
                     ($row['dasar_catat'] ? '[' . $row['dasar_catat'] . ']' : null),
-                    $row['nama_link']
                 ]);
                 $lokasi_simpan_output = empty($lokasiSimpanParts) ? '-' : implode(' | ', $lokasiSimpanParts);
             } else {

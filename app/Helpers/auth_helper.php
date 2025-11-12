@@ -47,7 +47,15 @@ function has_permission(string $permission, $contextData = null): bool
         // Untuk semua izin lainnya, Superadmin diizinkan.
         return true;
     }
-
+    if ($role === 'manager') {
+        // Pengecualian khusus: Superadmin tidak bisa menghapus sesama Superadmin.
+        // Ini adalah aturan keamanan untuk mencegah penguncian sistem (system lockout).
+        if ($permission === 'delete_user' && isset($contextData['role_access']) && $contextData['role_access'] === 'manager') {
+            return false;
+        }
+        // Untuk semua izin lainnya, Superadmin diizinkan.
+        return true;
+    }
     // =================================================================
     // 2. Logika untuk Role 'admin'
     // =================================================================

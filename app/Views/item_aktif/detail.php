@@ -1,149 +1,250 @@
 <?= $this->extend('layout/template') ?>
 
+<?= $this->section('styles') ?>
+<style>
+    /* --- CLEAN FLUID DETAIL PAGE STYLE --- */
+    body {
+        background-color: #f8f9fb;
+    }
+
+    .page-wrapper {
+        padding: 1rem 2rem;
+    }
+
+    @media (min-width: 992px) {
+        .page-wrapper {
+            padding: 1.5rem 4rem;
+        }
+    }
+
+    .card-modern {
+        border: none;
+        border-radius: 1rem;
+        background: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .card-modern:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header-min {
+        background: transparent !important;
+        border-bottom: none;
+        padding: 0.75rem 1.25rem 0;
+    }
+
+    .card-header-min h6 {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #0d6efd;
+        display: flex;
+        align-items: center;
+    }
+
+    .card-header-min h6 i {
+        font-size: 0.9rem;
+        margin-right: 0.5rem;
+    }
+
+    .card-body {
+        padding: 0.75rem 1.25rem 1rem;
+    }
+
+    .list-group-clean .list-group-item {
+        border: none;
+        border-bottom: 1px dashed #f0f0f0;
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+    }
+
+    .list-group-clean .list-group-item:last-child {
+        border-bottom: none;
+    }
+
+    .detail-section-title {
+        font-weight: 600;
+        color: #0d6efd;
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 4px;
+    }
+
+    .text-label {
+        color: #6c757d;
+        font-size: 0.88rem;
+    }
+
+    .badge-soft {
+        background-color: #eef5ff;
+        color: #0d6efd;
+        font-weight: 500;
+    }
+
+    .small-muted {
+        color: #adb5bd;
+        font-size: 0.8rem;
+    }
+
+    .card-title-doc {
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .shadow-thin {
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    }
+</style>
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
-<div class="container-fluid">
-    <!-- Header dan Tombol Kembali -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+<div class="container-fluid page-wrapper">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-start flex-wrap mb-4">
         <div>
-            <h1 class="h3 text-gray-800"><?= $title ?></h1>
-            <p class="mb-0 text-muted">Detail lengkap data arsip aktif.</p>
+            <h5 class="fw-semibold text-dark mb-1"><?= $title ?></h5>
+            <p class="small text-muted mb-0">Detail informasi arsip aktif</p>
         </div>
-        <div>
-            <a href="<?= site_url('item-aktif') ?>" class="btn btn-outline-secondary me-2">
+        <div class="mt-2 mt-md-0">
+            <a href="<?= site_url('item-aktif') ?>" class="btn btn-outline-secondary btn-sm me-2">
                 <i class="fas fa-arrow-left me-1"></i> Kembali
             </a>
-            <!-- Tambahkan tombol Edit jika perlu -->
             <?php if (has_permission('cud_arsip')): ?>
-                <a href="<?= site_url('item-aktif/edit/' . $item['id']) ?>" class="btn btn-warning">
-                    <i class="fas fa-edit me-1"></i> Edit Data
+                <a href="<?= site_url('item-aktif/edit/' . $item['id']) ?>" class="btn btn-primary btn-sm">
+                    <i class="fas fa-edit me-1"></i> Edit
                 </a>
             <?php endif; ?>
         </div>
     </div>
 
-    <!-- Judul Dokumen Utama (Lebih menonjol) -->
-    <div class="card shadow mb-4 p-3 bg-white border-bottom-primary">
-        <h4 class="mb-0 text-dark fw-bold">
-            <?= esc($item['judul_dokumen']) ?>
-        </h4>
-        <small class="text-muted mt-1">
-            <i class="fas fa-file-alt me-1"></i> Nomor Dokumen: <?= esc($item['no_dokumen'] ?? '-') ?>
-        </small>
+    <!-- Judul Dokumen -->
+    <div class="card card-modern mb-4 p-4 shadow-thin">
+        <div class="card-title-doc mb-1 text-dark"><?= esc($item['judul_dokumen']) ?></div>
+        <p class="small text-muted mb-0">
+            <i class="fas fa-file-alt me-1"></i> Nomor Dokumen:
+            <span class="fw-semibold text-dark"><?= esc($item['no_dokumen'] ?? '-') ?></span>
+        </p>
     </div>
 
-    <div class="row">
+    <!-- GRID -->
+    <div class="row g-4">
 
-        <!-- Kolom Kiri: Detail Dokumen & Unit Pencipta -->
+        <!-- KOLOM KIRI -->
         <div class="col-lg-8">
 
-            <!-- Card: INFORMASI DASAR -->
-            <div class="card shadow mb-4">
-                <div class="card-header bg-light py-2">
-                    <h6 class="m-0 font-weight-bold text-dark"><i class="fas fa-clipboard-list me-2"></i> Detail Dokumen & Pencipta</h6>
+            <!-- Metadata -->
+            <div class="card card-modern mb-4">
+                <div class="card-header card-header-min">
+                    <h6><i class="fas fa-cogs"></i> Metadata Dasar Arsip</h6>
                 </div>
                 <div class="card-body">
-
-                    <div class="row row-cols-md-2 row-cols-1 g-3">
-
-                        <!-- Group 1: Informasi Waktu & Catatan -->
-                        <div>
-                            <p class="fw-bold mb-1 text-primary">Waktu & Dasar</p>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-start px-0">
-                                    <span>Tanggal Dokumen</span>
-                                    <span class="fw-bold"><?= date('d F Y', strtotime($item['tgl_dokumen'])) ?></span>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <p class="detail-section-title">Waktu & Dasar</p>
+                            <ul class="list-group list-group-clean">
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fas fa-calendar-alt me-2 text-secondary"></i>Tanggal Dokumen</span>
+                                    <span class="fw-semibold"><?= date('d F Y', strtotime($item['tgl_dokumen'])) ?></span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start px-0">
-                                    <span>Tahun Cipta</span>
-                                    <span class="fw-bold"><?= esc($item['tahun_cipta']) ?></span>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fas fa-clock me-2 text-secondary"></i>Tahun Cipta</span>
+                                    <span><?= esc($item['tahun_cipta']) ?></span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start px-0">
-                                    <span>Dasar Pencatatan</span>
-                                    <span class="badge bg-info text-dark fw-bold"><?= esc($item['dasar_catat'] ?? 'Manual') ?></span>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fas fa-keyboard me-2 text-secondary"></i>Dasar Pencatatan</span>
+                                    <span class="badge badge-soft"><?= esc($item['dasar_catat'] ?? 'Manual') ?></span>
                                 </li>
                             </ul>
                         </div>
 
-                        <!-- Group 2: Klasifikasi -->
-                        <div>
-                            <p class="fw-bold mb-1 text-primary">Klasifikasi & Jenis</p>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-start px-0">
+                        <div class="col-md-6">
+                            <p class="detail-section-title">Klasifikasi & Jenis</p>
+                            <ul class="list-group list-group-clean">
+                                <li class="list-group-item d-flex justify-content-between">
                                     <span>Kode Klasifikasi</span>
-                                    <span class="text-end"><?= esc($item['kode_klasifikasi']) ?></span>
+                                    <span class="fw-semibold"><?= esc($item['kode_klasifikasi']) ?></span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start px-0">
+                                <li class="list-group-item d-flex justify-content-between">
                                     <span>Nama Klasifikasi</span>
-                                    <span class="text-end"><?= esc($item['nama_klasifikasi']) ?></span>
+                                    <span><?= esc($item['nama_klasifikasi']) ?></span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start px-0">
+                                <li class="list-group-item d-flex justify-content-between">
                                     <span>Jenis Naskah</span>
-                                    <span class="text-end"><?= esc($item['nama_naskah']) ?></span>
+                                    <span><?= esc($item['nama_naskah']) ?></span>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <h6 class="mt-4 pt-3 border-top fw-bold text-primary">Unit Pencipta</h6>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-start px-0">
-                            <span class="col-sm-4 text-muted">Eselon 3 (Pencipta)</span>
-                            <span class="col-sm-8 text-end"><?= esc($item['nama_es3']) ?></span>
+            <!-- Unit Pencipta -->
+            <div class="card card-modern">
+                <div class="card-header card-header-min">
+                    <h6><i class="fas fa-building"></i> Unit Pencipta</h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-clean">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="text-label">Eselon 3 (Pencipta)</span>
+                            <span class="fw-semibold"><?= esc($item['nama_es3']) ?></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-start px-0">
-                            <span class="col-sm-4 text-muted">Eselon 2</span>
-                            <span class="col-sm-8 text-end"><?= esc($item['nama_es2']) ?></span>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="text-label">Eselon 2</span>
+                            <span><?= esc($item['nama_es2']) ?></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-start px-0">
-                            <span class="col-sm-4 text-muted">Eselon 1</span>
-                            <span class="col-sm-8 text-end"><?= esc($item['nama_es1']) ?></span>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="text-label">Eselon 1</span>
+                            <span><?= esc($item['nama_es1']) ?></span>
                         </li>
                     </ul>
-
                 </div>
             </div>
 
         </div>
 
-        <!-- Kolom Kanan: Fisik, Lokasi & Administrasi -->
+        <!-- KOLOM KANAN -->
         <div class="col-lg-4">
 
-            <!-- Card: LOKASI FISIK & DIGITAL -->
-            <div class="card shadow mb-4">
-                <div class="card-header bg-light py-2">
-                    <h6 class="m-0 font-weight-bold text-dark"><i class="fas fa-boxes me-2"></i> Lokasi & Fisik</h6>
+            <!-- Lokasi & Fisik -->
+            <div class="card card-modern mb-4">
+                <div class="card-header card-header-min">
+                    <h6><i class="fas fa-map-marker-alt"></i> Lokasi & Fisik</h6>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Media Simpan
-                            <span class="badge bg-secondary"><?= esc(ucfirst($item['media_simpan'])) ?></span>
+                    <ul class="list-group list-group-clean">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Media Simpan</span>
+                            <span class="badge badge-soft"><?= esc(ucfirst($item['media_simpan'])) ?></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Tingkat Perkembangan
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Tingkat Perkembangan</span>
                             <span><?= esc(ucfirst($item['tk_perkembangan'])) ?></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Jumlah
-                            <span class="fw-bold"><?= esc($item['jumlah']) ?></span>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Jumlah</span>
+                            <span class="fw-semibold"><?= esc($item['jumlah']) ?></span>
                         </li>
 
                         <?php if ($item['media_simpan'] == 'kertas'): ?>
                             <li class="list-group-item">
-                                <p class="mb-0 fw-bold">Lokasi Fisik</p>
-                                <span class="small text-muted d-block">Nomor Box: <?= esc($item['no_box'] ?? '-') ?></span>
-                                <span class="small text-muted d-block">Lokasi: <?= esc($item['lokasi_simpan'] ?? '-') ?></span>
+                                <p class="fw-semibold mb-1">Lokasi Fisik</p>
+                                <small class="text-muted d-block">Nomor Box: <?= esc($item['no_box'] ?? '-') ?></small>
+                                <small class="text-muted d-block">Lokasi: <?= esc($item['lokasi_simpan'] ?? '-') ?></small>
                             </li>
-                        <?php else: // Media Elektronik 
-                        ?>
+                        <?php else: ?>
                             <li class="list-group-item">
-                                <p class="mb-0 fw-bold">Akses Digital</p>
+                                <p class="fw-semibold mb-1">Akses Digital</p>
                                 <?php if (!empty($item['nama_link'])): ?>
-                                    <a href="<?= esc($item['nama_link']) ?>" target="_blank" class="small text-decoration-none">
+                                    <a href="<?= esc($item['nama_link']) ?>" target="_blank" class="small text-decoration-none text-success">
                                         <i class="fas fa-link me-1"></i> Klik untuk mengunduh/melihat
                                     </a>
                                 <?php else: ?>
-                                    <span class="small text-danger">Link digital tidak tersedia.</span>
+                                    <small class="text-danger">Link digital tidak tersedia.</small>
                                 <?php endif; ?>
                             </li>
                         <?php endif; ?>
@@ -151,31 +252,36 @@
                 </div>
             </div>
 
-            <!-- Card: STATUS & ADMINISTRASI -->
-            <div class="card shadow mb-4">
-                <div class="card-header bg-light py-2">
-                    <h6 class="m-0 font-weight-bold text-dark"><i class="fas fa-user-shield me-2"></i> Administrasi</h6>
+            <!-- Administrasi -->
+            <div class="card card-modern">
+                <div class="card-header card-header-min">
+                    <h6><i class="fas fa-user-shield"></i> Administrasi</h6>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item px-0">
-                            <p class="mb-0 fw-bold">Status Berkas</p>
+                    <ul class="list-group list-group-clean">
+                        <li class="list-group-item">
+                            <p class="fw-semibold mb-1">Status Berkas</p>
                             <?php if ($item['id_berkas']): ?>
-                                <span class="badge bg-success mt-1"><i class="fas fa-folder-open me-1"></i> Sudah Diberkaskan</span>
-                                <p class="mb-0 small mt-1">Berkas Induk: <a href="<?= site_url('berkas-aktif/detail/' . $item['id_berkas']) ?>"><?= esc($item['nama_berkas']) ?></a></p>
+                                <span class="badge bg-success-subtle text-success">
+                                    <i class="fas fa-folder-open me-1"></i> Sudah Diberkaskan
+                                </span>
+                                <p class="small mt-1 mb-0">
+                                    Berkas: <a href="<?= site_url('berkas-aktif/detail/' . $item['id_berkas']) ?>" class="text-decoration-none"><?= esc($item['nama_berkas']) ?></a>
+                                </p>
                             <?php else: ?>
-                                <span class="badge bg-warning text-dark mt-1"><i class="fas fa-folder-minus me-1"></i> Belum Diberkaskan</span>
+                                <span class="badge bg-warning-subtle text-dark">
+                                    <i class="fas fa-folder-minus me-1"></i> Belum Diberkaskan
+                                </span>
                             <?php endif; ?>
                         </li>
-                        <li class="list-group-item px-0 mt-2">
-                            <p class="mb-0 fw-bold">Pencatat</p>
-                            <span class="small d-block"><?= esc($item['user_creator']) ?></span>
-                            <span class="small text-muted d-block">Dicatat pada: <?= date('d M Y H:i', strtotime($item['created_at'])) ?></span>
+                        <li class="list-group-item mt-2">
+                            <p class="fw-semibold mb-1">Pencatat</p>
+                            <small class="d-block"><?= esc($item['user_creator']) ?></small>
+                            <small class="text-muted">Dicatat pada: <?= date('d M Y H:i', strtotime($item['created_at'])) ?></small>
                         </li>
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

@@ -189,7 +189,7 @@
                         <label for="dasar_catat" class="form-label">Dasar Pencatatan</label>
                         <select class="form-select select2-form <?= $validation->hasError('dasar_catat') ? 'is-invalid' : '' ?>" id="dasar_catat" name="dasar_catat" style="width: 100%;">
                             <?php
-                            $options = ['Srikandi', 'SIMA', 'MAP', 'BISMA', 'SADEWA', 'POS', 'Lainnya'];
+                            $options = ['Srikandi', 'SIMA', 'MAP', 'BISMA', 'SADEWA', 'POS', 'GWS', 'Lainnya'];
                             $selectedValue = old('dasar_catat', $item['dasar_catat'] ?? '');
                             ?>
                             <option value="">-- Pilih Dasar Pencatatan --</option>

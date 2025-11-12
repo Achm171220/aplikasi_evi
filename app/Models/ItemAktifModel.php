@@ -89,7 +89,12 @@ class ItemAktifModel extends BaseModel
         'id_berita_acara'   => 'permit_empty|integer',
     ];
 
-    protected $validationMessages = []; // Tambahkan pesan kustom jika diperlukan
+    protected $validationMessages = [
+        'unique_dokumen_tahun' => [
+            'uniqueDokumenTahun' => 'Arsip dengan Nomor Dokumen ini ({value}) dan Tahun Cipta ({param}) sudah ada di sistem.'
+        ],
+        // ... (Pesan validasi lainnya) ...
+    ];
     protected $skipValidation     = false;
     protected $cleanValidationRules = true;
 
@@ -414,5 +419,27 @@ class ItemAktifModel extends BaseModel
         $order = ['item_inaktif.id' => 'DESC'];
 
         return $this->getDataTables($request, $column_search, $column_order, $order);
+    }
+    public function uniqueDokumenTahun(string $noDokumen, string $fields, array $data): bool
+    {
+        // $fields akan berisi 'tahun_cipta'
+        $tahunCiptaField = $fields;
+        $tahunCipta = $data[$tahunCiptaField] ?? null;
+
+        if (empty($tahunCipta)) {
+            // Jika tahun cipta kosong, kita tidak bisa validasi unik kombinasi
+            return true;
+        }
+
+        // Jalankan Query untuk mencari duplikasi
+        $query = $this->where('no_dokumen', $noDokumen)
+            ->where('tahun_cipta', $tahunCipta);
+
+        // Catatan: Jika ini operasi UPDATE, kita harus mengecualikan ID saat ini
+        if (isset($data['id'])) {
+            $query->where('id !=', $data['id']);
+        }
+
+        return $query->countAllResults() === 0;
     }
 }

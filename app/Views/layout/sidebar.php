@@ -32,20 +32,27 @@ if (!function_exists('is_parent_active')) {
                     <i class="bi bi-columns-gap me-2"></i> Dashboard
                 </a>
 
-                <?php if ($role_access === 'superadmin' || $role_access === 'admin' || $role_access === 'user'): ?>
-                    <!-- Arsip Aktif -->
-                    <?php $active_arsip_aktif = is_parent_active($current_segment1, ['item-aktif', 'berkas-aktif', 'laporan-aktif']); ?>
-                    <a href="#arsip-aktif" data-bs-toggle="collapse" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center <?= $active_arsip_aktif ? 'active' : '' ?>">
-                        <span><i class="bi bi-folder-check me-2"></i> Arsip Aktif</span>
-                        <i class="bi bi-chevron-down arrow-icon"></i>
-                    </a>
-                    <div class="collapse <?= $active_arsip_aktif ? 'show' : '' ?>" id="arsip-aktif">
-                        <div class="submenu-container">
-                            <a href="<?= site_url('item-aktif') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'item-aktif') ? 'active' : '' ?>">Item Berkas</a>
-                            <a href="<?= site_url('berkas-aktif') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'berkas-aktif') ? 'active' : '' ?>">Berkas</a>
-                            <a href="<?= site_url('laporan-aktif') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'laporan-aktif') ? 'active' : '' ?>">Laporan</a>
+                <?php if ($role_access === 'superadmin' || $role_access === 'admin' || $role_access === 'user' || $role_access === 'manager'): ?>
+                    <?php
+                    // Jabatan yang bisa melihat menu Arsip Inaktif
+                    $can_view_arsip_inaktif_by_jabatan = in_array($user_jabatan, ['arsiparis', 'pengelola_arsip', 'sekretaris']);
+                    // --- PERBAIKAN DI SINI ---
+                    // Izinkan jika jabatannya sesuai, ATAU jika role-nya Superadmin
+                    if ($can_view_arsip_inaktif_by_jabatan || $role_access === 'superadmin'): ?>
+                        <!-- Arsip Aktif -->
+                        <?php $active_arsip_aktif = is_parent_active($current_segment1, ['item-aktif', 'berkas-aktif', 'laporan-aktif']); ?>
+                        <a href="#arsip-aktif" data-bs-toggle="collapse" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center <?= $active_arsip_aktif ? 'active' : '' ?>">
+                            <span><i class="bi bi-folder-check me-2"></i> Arsip Aktif</span>
+                            <i class="bi bi-chevron-down arrow-icon"></i>
+                        </a>
+                        <div class="collapse <?= $active_arsip_aktif ? 'show' : '' ?>" id="arsip-aktif">
+                            <div class="submenu-container">
+                                <a href="<?= site_url('item-aktif') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'item-aktif') ? 'active' : '' ?>">Item Berkas</a>
+                                <a href="<?= site_url('berkas-aktif') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'berkas-aktif') ? 'active' : '' ?>">Berkas</a>
+                                <a href="<?= site_url('laporan-aktif') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'laporan-aktif') ? 'active' : '' ?>">Laporan</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
 
                     <!-- Arsip Inaktif -->
                     <?php
@@ -68,14 +75,16 @@ if (!function_exists('is_parent_active')) {
                             </div>
                         </div>
                     <?php endif; ?>
-
-                    <a href="<?= site_url('pemindahan') ?>" class="list-group-item list-group-item-action <?= ($current_segment1 == 'pemindahan') ? 'active' : '' ?>">
-                        <i class="bi bi-collection me-2"></i> Pemindahan
-                    </a>
+                    <?php
+                    if ($role_access !== 'manager') {?>
+                        <a href="<?= site_url('pemindahan') ?>" class="list-group-item list-group-item-action <?= ($current_segment1 == 'pemindahan') ? 'active' : '' ?>">
+                            <i class="bi bi-collection me-2"></i> Pemindahan
+                        </a>
+                    <?php } ?>
 
 
                     <!-- ================= MANAJEMEN ================= -->
-                    <?php if (in_array($role_access, ['superadmin'])): ?>
+                    <?php if (in_array($role_access, ['superadmin', 'manager'])): ?>
                         <div class="sidebar-heading-menu">MANAJEMEN</div>
                         <a href="<?= site_url('klasifikasi') ?>" class="list-group-item list-group-item-action <?= ($current_segment1 == 'klasifikasi') ? 'active' : '' ?>">
                             <i class="bi bi-tags me-2"></i> Klasifikasi
@@ -100,7 +109,7 @@ if (!function_exists('is_parent_active')) {
                     <?php endif; ?>
 
                     <!-- ================= UNIT KERJA ================= -->
-                    <?php if ($role_access === 'superadmin' || $role_access === 'admin'): ?>
+                    <?php if ($role_access === 'superadmin' || $role_access === 'admin' ||$role_access === 'manager'): ?>
                         <?php $active_unit_kerja = is_parent_active($current_segment1, ['unit-kerja-es1', 'unit-kerja-es2', 'unit-kerja-es3']); ?>
                         <a href="#unit-kerja" data-bs-toggle="collapse"
                             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center <?= $active_unit_kerja ? 'active' : '' ?>">
@@ -109,7 +118,7 @@ if (!function_exists('is_parent_active')) {
                         </a>
                         <div class="collapse <?= $active_unit_kerja ? 'show' : '' ?>" id="unit-kerja">
                             <div class="submenu-container">
-                                <?php if ($role_access === 'superadmin'): ?>
+                                <?php if ($role_access === 'superadmin' || $role_access === 'manager'): ?>
                                     <a href="<?= site_url('unit-kerja-es1') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'unit-kerja-es1') ? 'active' : '' ?>">Eselon 1</a>
                                     <a href="<?= site_url('unit-kerja-es2') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'unit-kerja-es2') ? 'active' : '' ?>">Eselon 2</a>
                                     <a href="<?= site_url('unit-kerja-es3') ?>" class="list-group-item sub-item <?= ($current_segment1 == 'unit-kerja-es3') ? 'active' : '' ?>">Eselon 3</a>

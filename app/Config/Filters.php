@@ -36,6 +36,7 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'auth'          => \App\Filters\Auth::class, // <-- TAMBAHKAN BARIS INI
         'superadmin'    => \App\Filters\Superadmin::class,
+        'manager'       => \App\Filters\Manager::class,
         'admin'         => \App\Filters\Admin::class, // <-- TAMBAHKAN INI
         'role_jabatan'  => \App\Filters\RoleJabatan::class,
     ];

@@ -82,7 +82,7 @@ class UnitKerjaEs3 extends BaseController
     private function prepareFormData($es3 = null)
     {
         $data = [
-            'unitKerjaEs3' => $es3,
+            'unitKerjaEs3' => $es3, // PENTING: Pertahankan data ES3 asli
             'validation'   => \Config\Services::validation(),
         ];
 
@@ -92,28 +92,31 @@ class UnitKerjaEs3 extends BaseController
         if ($userRole === 'superadmin') {
             $data['es1_options'] = $this->unitKerjaEs1Model->orderBy('nama_es1', 'ASC')->findAll();
             if ($es3) {
+                // Saat edit, cari ID ES1 induk
                 $es2 = $this->unitKerjaEs2Model->find($es3['id_es2']);
                 if ($es2) {
+                    // Simpan ID ES1 induk ke array ES3 untuk prefill view
                     $es3['id_es1'] = $es2['id_es1'];
+                    $data['unitKerjaEs3'] = $es3;
                 }
-                $data['unitKerjaEs3'] = $es3;
             }
         } elseif ($userRole === 'admin' && $authData && !empty($authData['id_es2'])) {
             $es2 = $this->unitKerjaEs2Model->find($authData['id_es2']);
             if ($es2) {
+                // Admin hanya bisa melihat ES1 dan ES2 miliknya
                 $data['es1_options'] = $this->unitKerjaEs1Model->where('id', $es2['id_es1'])->findAll();
-                $data['es2_prefill'] = $es2; // Kirim seluruh data es2
+                $data['es2_prefill'] = $es2; // Data ES2 Admin lengkap
 
-                // Tambahkan prefill id_es1 & id_es2 ke variabel utama untuk konsistensi
+                // Jika mode EDIT, pastikan ES3 yang diedit juga mendapatkan ID ES1 dan ES2 yang benar (milik Admin)
                 if ($es3) {
                     $es3['id_es1'] = $es2['id_es1'];
                     $es3['id_es2'] = $es2['id'];
-                    $data['unitKerjaEs3'] = $es3;
-                } else {
-                    $data['es2_prefill_admin'] = $es2;
+                    $data['unitKerjaEs3'] = $es3; // Data ES3 di-update dengan ID Induk
                 }
             }
         }
+        // Pastikan $isSuperAdmin dikirim ke view untuk logika JS/HTML
+        $data['isSuperAdmin'] = $userRole === 'superadmin';
 
         return $data;
     }
@@ -166,22 +169,78 @@ class UnitKerjaEs3 extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
+        // OTORISASI: Jika Admin, pastikan ES3 ini di bawah ES2-nya
+        $userRole = session()->get('role_access');
+        $id_es2_admin = session()->get('auth_data')['id_es2'] ?? null;
+
+        if ($userRole === 'admin') {
+            if ($es3['id_es2'] !== $id_es2_admin) {
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Anda tidak diizinkan mengedit unit kerja di luar yurisdiksi Anda.');
+            }
+        }
+        // END OTORISASI
+
         $data = $this->prepareFormData($es3);
         $data['title'] = 'Edit Unit Kerja Eselon 3';
         return view('unit_kerja_es3/form', $data);
     }
+
     // (U)PDATE: Memproses data dari form edit
     public function update($id = null)
     {
-        $rules = $this->unitKerjaEs3Model->getValidationRules();
-        // Update aturan validasi 'kode' untuk mengabaikan dirinya sendiri
-        $rules['kode'] = "required|is_unique[unit_kerja_es3.kode,id,$id]";
+        // 1. Otorisasi dan Cek Keberadaan
+        $es3ToUpdate = $this->unitKerjaEs3Model->find($id);
+        if (!$es3ToUpdate) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
 
-        if (!$this->validate($rules)) {
+        $postData = $this->request->getPost();
+
+        // Cek apakah Admin mencoba mengubah unit di luar yurisdiksinya
+        $userRole = session()->get('role_access');
+        $id_es2_admin = session()->get('auth_data')['id_es2'] ?? null;
+
+        if ($userRole === 'admin') {
+            // Admin tidak boleh mengubah id_es2 (harus sesuai dengan ES2 yang terikat)
+            if ($es3ToUpdate['id_es2'] !== $id_es2_admin) {
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Anda tidak diizinkan mengupdate unit kerja ini.');
+            }
+        }
+
+
+        // 2. Kumpulkan data untuk validasi
+        $id_es2_final = $userRole === 'admin' ? $id_es2_admin : $postData['id_es2'];
+
+        $dataToValidate = [
+            'id'           => $id, // PENTING untuk validasi is_unique
+            'id_es2'       => $id_es2_final,
+            'nama_es3'     => $postData['nama_es3'],
+            'kode'         => $postData['kode'], // Kode lengkap sudah di hidden field
+        ];
+
+        // 3. Update aturan validasi 'kode' untuk mengabaikan dirinya sendiri
+        $rules = $this->unitKerjaEs3Model->getValidationRules();
+        $rules['kode'] = "required|is_unique[unit_kerja_es3.kode,id,$id]";
+        $rules['id_es2'] = "required|integer"; // Pastikan id_es2 wajib ada
+
+        if (!$this->validate($rules, $dataToValidate)) {
+            // Jika validasi gagal, kembalikan dengan input lama
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
 
-        $this->unitKerjaEs3Model->save($this->request->getPost());
+        // 4. Proses Update
+        $dataToSave = [
+            'id_es2'       => $id_es2_final,
+            'nama_es3'     => $postData['nama_es3'],
+            'kode'         => $postData['kode'],
+            'id_es2'       => $id_es2_final, // Simpan ID ES2 final
+        ];
+
+        // KUNCI PERBAIKAN: Gunakan update($id, $data) secara eksplisit
+        if ($this->unitKerjaEs3Model->update($id, $dataToSave) === false) {
+            return redirect()->back()->withInput()->with('error', 'Gagal menyimpan data ke database.');
+        }
+
         $this->session->setFlashdata('success', 'Data Eselon 3 berhasil diperbarui.');
         return redirect()->to('/unit-kerja-es3');
     }

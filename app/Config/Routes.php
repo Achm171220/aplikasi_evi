@@ -250,6 +250,42 @@ $routes->group('/', ['filter' => 'auth'], function ($routes) {
         $routes->get('unit-kerja/treeview/data', 'UnitKerja::getTreeviewData');
     });
 
+    $routes->group('', ['filter' => 'manager'], function ($routes) {
+        $routes->group('hak-fitur', function ($routes) {
+            $routes->get('/', 'HakFitur::index');
+            $routes->post('list', 'HakFitur::listData');
+            $routes->get('new', 'HakFitur::new');
+            $routes->post('/', 'HakFitur::create');
+            $routes->get('edit/(:num)', 'HakFitur::edit/$1');
+            $routes->match(['put', 'patch'], 'update/(:num)', 'HakFitur::update/$1');
+            $routes->delete('delete/(:num)', 'HakFitur::delete/$1');
+        });
+
+        $routes->group('unit-kerja-es1', function ($routes) {
+            $routes->get('/', 'UnitKerjaEs1::index');
+            $routes->post('list', 'UnitKerjaEs1::listData');
+            $routes->get('new', 'UnitKerjaEs1::new');
+            $routes->post('/', 'UnitKerjaEs1::create');
+            $routes->get('edit/(:num)', 'UnitKerjaEs1::edit/$1');
+            $routes->match(['put', 'patch'], 'update/(:num)', 'UnitKerjaEs1::update/$1');
+            $routes->delete('delete/(:num)', 'UnitKerjaEs1::delete/$1');
+        });
+
+        $routes->group('unit-kerja-es2', function ($routes) {
+            $routes->get('/', 'UnitKerjaEs2::index');
+            $routes->post('list', 'UnitKerjaEs2::listData');
+            $routes->get('new', 'UnitKerjaEs2::new');
+            $routes->post('/', 'UnitKerjaEs2::create');
+            $routes->get('edit/(:num)', 'UnitKerjaEs2::edit/$1');
+            $routes->match(['put', 'patch'], 'update/(:num)', 'UnitKerjaEs2::update/$1');
+            $routes->delete('delete/(:num)', 'UnitKerjaEs2::delete/$1');
+        });
+        $routes->group('activity-logs', function ($routes) {
+            $routes->get('/', 'ActivityLog::index');
+            $routes->post('list', 'ActivityLog::listData');
+            // $routes->get('detail/(:num)', 'ActivityLogController::viewDetail/$1'); // Jika ada halaman detail
+        });
+    });
     $routes->group('', ['filter' => 'superadmin'], function ($routes) {
         $routes->group('hak-fitur', function ($routes) {
             $routes->get('/', 'HakFitur::index');
