@@ -19,15 +19,13 @@ EVI adalah solusi perangkat lunak yang dirancang untuk mendigitalisasi dan menge
 
 Dengan antarmuka yang modern dan responsif, EVI bertujuan untuk meningkatkan produktivitas, memastikan kepatuhan, dan menyediakan data pemantauan kinerja kearsipan bagi pimpinan.
 
-Fitur Unggulan
+**Fitur Unggulan**
 
-Manajemen Arsip Komprehensif: Mengelola arsip dari fase Aktif hingga Inaktif, termasuk alur kerja untuk Pemindahan Arsip dengan sistem usulan dan verifikasi.
+- Manajemen Arsip Komprehensif: Mengelola arsip dari fase Aktif hingga Inaktif, termasuk alur kerja untuk Pemindahan Arsip dengan sistem usulan dan verifikasi.
+- Kontrol Akses Berbasis Peran (RBAC): Hirarki otorisasi multi-level yang ketat, dirancang untuk memisahkan tugas antara pelaksana operasional, manajer unit, dan administrator sistem.
+- Segregasi Data Berbasis Unit: Data arsip terisolasi sesuai dengan struktur unit kerja organisasi, memastikan kerahasiaan dan integritas data antar unit.
 
-Kontrol Akses Berbasis Peran (RBAC): Hirarki otorisasi multi-level yang ketat, dirancang untuk memisahkan tugas antara pelaksana operasional, manajer unit, dan administrator sistem.
-
-Segregasi Data Berbasis Unit: Data arsip terisolasi sesuai dengan struktur unit kerja organisasi, memastikan kerahasiaan dan integritas data antar unit.
-
-Dashboard & Pelaporan Informatif:
+**Dashboard & Pelaporan Informatif:**
 
 Dashboard Dinamis: Tampilan statistik yang disesuaikan untuk setiap level pengguna, mulai dari rekapitulasi personal hingga pemantauan global.
 
