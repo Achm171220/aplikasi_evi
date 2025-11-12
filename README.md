@@ -1,7 +1,3 @@
-Anda benar. README.md yang terlalu teknis bisa mengekspos "dapur" aplikasi. Mari kita ubah menjadi lebih ringkas, berorientasi pada fitur dan manfaat (marketing-style), dan menghilangkan detail implementasi teknis.
-
-Ini adalah versi yang jauh lebih aman dan profesional untuk repositori publik.
-
 EVI - Sistem Informasi Kearsipan Elektronik
 
 ![alt text](https://img.shields.io/badge/PHP-8.2%2B-blue.svg)
