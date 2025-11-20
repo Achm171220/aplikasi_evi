@@ -1,0 +1,1155 @@
+/*
+ * =================================================================
+ *  EVI - ArsipDigital - Final Integrated Stylesheet
+ * =================================================================
+ *  Version: 10.0 (Final with Upgraded Sidebar Card)
+ *  Description: The complete, optimized, and themed CSS for the
+ *               modern dashboard application.
+ * =================================================================
+ */
+
+/* =================================================================
+   1. CORE: Design System & Color Theme (Light & Dark)
+   ================================================================= */
+:root,
+[data-bs-theme="light"] {
+    /* --bs-blue: #5e72e4; --bs-red: #f5365c; ... */
+    /* Pertahankan warna dasar yang Anda inginkan */
+    --bs-primary: #5e72e4;
+    --bs-secondary: #8898aa;
+    --bs-success: #2dce89;
+    --bs-info: #11cdef;
+    --bs-warning: #ffd600;
+    --bs-danger: #f5365c;
+    --bs-light: #f6f9fc;
+    --bs-dark: #212529;
+
+    /* RGB values */
+    --bs-primary-rgb: 94, 114, 228;
+    --bs-secondary-rgb: 136, 152, 170;
+    --bs-success-rgb: 45, 206, 137;
+    --bs-info-rgb: 17, 205, 239;
+    --bs-warning-rgb: 255, 214, 0;
+    --bs-danger-rgb: 245, 54, 92;
+    --bs-light-rgb: 246, 249, 252;
+    --bs-dark-rgb: 33, 37, 41;
+
+    /* Font, Body & Komponen */
+    --bs-body-color: #525f7f;
+    --bs-body-bg: var(--bs-light);
+    --bs-border-color: #e9ecef;
+    --bs-heading-color: #32325d;
+    --card-bg: var(--bs-white);
+    --card-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
+
+    /* Variabel Kustom Template */
+    --sidebar-width: 260px;
+    --layout-gap: 1.5rem;
+    --transition-speed: 0.3s;
+}
+
+[data-bs-theme="dark"] {
+    --bs-primary: #5e72e4;
+    /* Bisa tetap sama atau diganti untuk dark mode */
+    --bs-secondary: #8b9cb1;
+    --bs-success: #2dce89;
+    --bs-info: #11cdef;
+    --bs-warning: #ffd600;
+    --bs-danger: #f5365c;
+    --bs-light: #2c3654;
+    /* Background terang di dark mode */
+    --bs-dark: #e9ecef;
+    /* Teks gelap di dark mode */
+
+    /* RGB values for dark mode */
+    --bs-primary-rgb: 94, 114, 228;
+    --bs-secondary-rgb: 139, 156, 177;
+    --bs-success-rgb: 45, 206, 137;
+    --bs-info-rgb: 17, 205, 239;
+    --bs-warning-rgb: 255, 214, 0;
+    --bs-danger-rgb: 245, 54, 92;
+    --bs-light-rgb: 44, 54, 84;
+    --bs-dark-rgb: 233, 236, 239;
+
+    /* Font, Body & Komponen Dark */
+    --bs-body-color: #aebfd4;
+    --bs-body-bg: #1e2846;
+    /* Background utama aplikasi */
+    --bs-border-color: #3e4a6e;
+    --bs-heading-color: #f6f9fc;
+    --card-bg: #27314f;
+    --card-shadow: 0 0 2rem 0 rgba(0, 0, 0, .15);
+}
+
+/* =================================================================
+   2. GLOBAL STYLES & PRELOADER
+   ================================================================= */
+body {
+    background-color: var(--bs-body-bg);
+    font-family: var(--bs-body-font-family);
+    color: var(--bs-body-color);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    overflow-x: hidden;
+}
+
+
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--bs-heading-color);
+    font-weight: 600;
+}
+
+.card {
+    border: none;
+    border-radius: .5rem;
+    box-shadow: var(--card-shadow);
+    background-color: var(--card-bg);
+    transition: background-color var(--transition-speed) ease;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bs-body-bg);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* =================================================================
+   3. LAYOUT: Kapsul Modern & Responsif
+   ================================================================= */
+#wrapper {
+    display: flex;
+}
+
+#sidebar-wrapper.sidebar-container {
+    width: var(--sidebar-width);
+    position: fixed;
+    top: var(--layout-gap);
+    left: var(--layout-gap);
+    bottom: var(--layout-gap);
+    background-color: var(--card-bg);
+    border-radius: .5rem;
+    box-shadow: var(--card-shadow);
+    z-index: 1031;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(0);
+    transition: transform var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-left: calc(var(--sidebar-width) + var(--layout-gap));
+    transition: padding-left var(--transition-speed) ease-in-out;
+}
+
+/* --- Toggle & Responsive Logic --- */
+#sidebar-wrapper.sidebar-container {
+    transform: translateX(0);
+    transition: transform var(--transition-speed) ease-in-out;
+}
+
+#wrapper.toggled #sidebar-wrapper.sidebar-container {
+    transform: translateX(calc(-100% - var(--layout-gap)));
+}
+
+#wrapper.toggled #page-content-wrapper {
+    padding-left: var(--layout-gap);
+}
+
+/* === Media Query untuk Tablet & Mobile (Auto-Hide) === */
+@media (max-width: 991.98px) {
+    #sidebar-wrapper.sidebar-container {
+        /* Secara default, sidebar disembunyikan di luar layar */
+        transform: translateX(calc(-100% - var(--layout-gap)));
+    }
+
+    #page-content-wrapper {
+        /* Konten mengambil lebar penuh */
+        padding-left: var(--layout-gap);
+    }
+
+    /* Saat di-toggle di mobile, sidebar akan muncul */
+    #wrapper.toggled #sidebar-wrapper.sidebar-container {
+        transform: translateX(0);
+    }
+}
+
+/* =================================================================
+   4. SIDEBAR COMPONENTS
+   ================================================================= */
+.sidebar-heading {
+    padding: 1.25rem 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--bs-heading-color);
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-top-section {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.sidebar-bottom-section {
+    flex-shrink: 0;
+    padding: 1rem;
+}
+
+.list-group-container {
+    padding: 0 1rem;
+}
+
+.list-group-item {
+    border-radius: .4375rem;
+    padding: 0.8rem 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+    border: none;
+    color: var(--bs-secondary);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.list-group-item i {
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.list-group-item:hover,
+.list-group-item.active {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+}
+
+.list-group-item:hover i,
+.list-group-item.active i {
+    color: var(--bs-white);
+}
+
+.list-group-item.text-danger:hover {
+    background-color: var(--bs-danger);
+    color: var(--bs-white) !important;
+}
+
+/* Submenu & Dropdown Arrow */
+.submenu-container {
+    margin-left: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.sub-item,
+.sidebar-submenu .list-group-item {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.9em;
+    color: var(--bs-secondary);
+    margin-bottom: 0.25rem !important;
+    border-radius: .4375rem !important;
+    background-color: transparent !important;
+}
+
+.sub-item:hover,
+.sub-item.active,
+.sidebar-submenu .list-group-item:hover,
+.sidebar-submenu .list-group-item.active {
+    background-color: rgba(var(--bs-primary-rgb), 0.1) !important;
+    color: var(--bs-primary) !important;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+a[aria-expanded="true"] .arrow-icon,
+.dropdown-toggle-custom:not(.collapsed) .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.sidebar-heading-menu {
+    padding: 0.8rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--bs-secondary);
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+}
+
+/* --- Sidebar Upgrade Card (Info & Logout) --- */
+.sidebar-upgrade-card {
+    background-color: var(--bs-dark);
+    border-radius: .5rem;
+    padding: 1.25rem;
+    text-align: center;
+    transition: background-color var(--transition-speed) ease;
+}
+
+html:not(.dark) .sidebar-upgrade-card {
+    background-color: #212529;
+}
+
+html.dark .sidebar-upgrade-card {
+    background-color: var(--bs-dark);
+    /* Ubah ke variabel Bootstrap */
+    color: var(--bs-white);
+    /* Gunakan var(--bs-white) atau var(--bs-body-bg) */
+}
+
+.sidebar-upgrade-card .card-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem auto;
+    background-color: rgba(var(--bs-light-rgb), 0.1);
+    color: var(--bs-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.sidebar-upgrade-card .card-info .app-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--bs-white);
+    display: block;
+}
+
+.sidebar-upgrade-card .card-info .copyright {
+    font-size: 0.8em;
+    color: var(--bs-secondary);
+    display: block;
+}
+
+.sidebar-upgrade-card .btn-primary {
+    background-color: var(--bs-primary);
+    border: none;
+    font-weight: 500;
+}
+
+.sidebar-upgrade-card .btn-primary:hover {
+    background-color: #233dd2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* =================================================================
+   5. NAVBAR & PAGE HEADER
+   ================================================================= */
+.custom-navbar {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 0.75rem 0 !important;
+}
+
+.custom-sidebar-toggle-btn {
+    color: var(--bs-secondary);
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.custom-sidebar-toggle-btn:hover {
+    color: var(--bs-primary);
+}
+
+#theme-toggle {
+    cursor: pointer;
+    color: var(--bs-secondary);
+}
+
+#theme-toggle:hover {
+    color: var(--bs-primary);
+}
+
+.navbar-datetime {
+    font-size: 0.9rem;
+    color: var(--bs-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.page-header {
+    border-bottom: 1px solid var(--bs-border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem !important;
+}
+
+.page-header .page-title h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    font-size: 0.9em;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: var(--bs-primary);
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--bs-secondary);
+    font-weight: 500;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: var(--bs-secondary);
+    content: "/";
+}
+
+/* =================================================================
+   6. DATATABLES THEME & FOOTER
+   ================================================================= */
+.dataTables_wrapper {
+    padding: 0;
+}
+
+.dataTables_top {
+    padding-bottom: 1rem;
+}
+
+.dataTables_bottom {
+    padding-top: 1rem;
+}
+
+
+/* --- Header Tabel (Judul Kolom) --- */
+/* --- Header Tabel (Judul Kolom) --- */
+.table thead th {
+    /* Gunakan variabel CSS untuk warna, agar responsif terhadap tema */
+    background-color: var(--bs-light-bg-subtle, #f8f9fa);
+    /* Fallback untuk kompatibilitas */
+    color: var(--bs-body-color);
+    /* Ambil warna teks body utama */
+    font-weight: 600;
+    border-bottom: 2px solid var(--bs-border-color);
+    /* Gunakan variabel border */
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* --- Badan Tabel (Baris Data) --- */
+.table tbody td {
+    vertical-align: middle;
+    padding: 0.85rem 1rem;
+    color: var(--bs-body-color);
+    /* Ambil warna teks body utama */
+    border-color: var(--bs-border-color);
+    /* Gunakan variabel border */
+}
+
+/* Efek hover pada baris tabel */
+.table-hover tbody tr:hover {
+    /* Gunakan variabel CSS Bootstrap untuk warna hover */
+    background-color: var(--bs-table-hover-bg);
+    cursor: default;
+}
+
+/* Menghilangkan garis aneh di baris terakhir saat hover */
+.table-hover tbody tr:hover td {
+    border-top-color: var(--bs-border-color);
+}
+
+
+/* --- Kontrol: "Show Entries" dan "Search" --- */
+.dataTables_length label,
+.dataTables_filter label {
+    font-size: 0.9rem;
+    color: var(--bs-secondary);
+    /* Warna teks sekunder */
+}
+
+.dataTables_length select,
+.dataTables_filter input {
+    border-radius: 0.375rem;
+    border: 1px solid var(--bs-border-color);
+    /* Gunakan variabel border */
+    padding: 0.375rem 0.75rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background-color: var(--card-bg);
+    /* Gunakan background card */
+    color: var(--bs-body-color);
+    /* Warna teks body */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Memberi fokus yang lebih baik pada input search */
+.dataTables_filter input:focus {
+    border-color: var(--bs-primary);
+    /* Warna primer saat fokus */
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+
+/* --- Paginasi (Tombol Halaman) --- */
+.pagination .page-item .page-link {
+    border-radius: 0.375rem;
+    margin: 0 2px;
+    border: none;
+    color: var(--bs-primary);
+    /* Warna primer */
+    background-color: var(--bs-light);
+    /* Background terang */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Tombol halaman aktif */
+.pagination .page-item.active .page-link {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tombol halaman saat di-hover */
+.pagination .page-item:not(.active) .page-link:hover {
+    background-color: var(--bs-table-hover-bg);
+    /* Gunakan warna hover tabel */
+    transform: translateY(-1px);
+}
+
+/* Tombol "Previous" dan "Next" yang dinonaktifkan */
+.pagination .page-item.disabled .page-link {
+    color: var(--bs-secondary);
+    background-color: transparent;
+}
+
+
+/* --- Konten Spesifik --- */
+.table td strong {
+    font-weight: 500;
+    color: var(--bs-heading-color);
+    /* Warna heading agar kontras */
+}
+
+.table td .small.text-muted {
+    font-size: 0.8em;
+    color: var(--bs-secondary) !important;
+    /* Pastikan warna muted berubah */
+}
+
+/* === Custom badge untuk warna dark mode === */
+/* Contoh badge yang perlu warna spesifik */
+.badge.text-bg-dark {
+    background-color: var(--bs-dark) !important;
+    color: var(--bs-white) !important;
+}
+
+[data-bs-theme="dark"] .badge.text-bg-dark {
+    background-color: var(--bs-light) !important;
+    /* Di dark mode, dark badge jadi terang */
+    color: var(--bs-dark) !important;
+}
+
+/* Badge yang digunakan di Users Controller */
+.badge.bg-info.text-dark {
+    background-color: var(--bs-info) !important;
+    color: var(--bs-dark) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-info.text-dark {
+    background-color: var(--bs-info) !important;
+    color: var(--bs-light) !important;
+    /* Kontras di dark mode */
+}
+
+.badge.bg-warning.text-dark {
+    background-color: var(--bs-warning) !important;
+    color: var(--bs-dark) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-warning.text-dark {
+    background-color: var(--bs-warning) !important;
+    color: var(--bs-dark) !important;
+    /* Bisa tetap dark atau light tergantung kontras */
+}
+
+/* Perbaikan khusus untuk text-primary di dark mode jika defaultnya terlalu gelap */
+[data-bs-theme="dark"] .text-primary {
+    color: var(--bs-primary-text-emphasis) !important;
+    /* Atau warna custom terang */
+}
+
+/* =================================================================
+   7. CUSTOM COMPONENTS (Cards, Badges, Responsive Helpers)
+   ================================================================= */
+.card-statistic {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.card-statistic .info h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bs-heading-color);
+    margin: 0;
+}
+
+.card-statistic .info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--bs-secondary);
+}
+
+.card-statistic .icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--bs-white);
+    flex-shrink: 0;
+}
+
+.icon-circle.green {
+    background-image: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%);
+}
+
+.icon-circle.blue {
+    background-image: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+}
+
+.icon-circle.orange {
+    background-image: linear-gradient(310deg, #fb6340 0%, #fbb140 100%);
+}
+
+.icon-circle.purple {
+    background-image: linear-gradient(310deg, #5e72e4 0%, #825ee4 100%);
+}
+
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1030;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-heading-menu {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+/* CSS Kustom untuk Tombol Profil di Navbar */
+#profileDropdown.btn {
+    padding: 0.35rem 0.85rem;
+    /* Atur padding vertikal dan horizontal agar pas */
+    font-weight: 500;
+    /* Sedikit lebih tebal */
+    line-height: 1.5;
+    border: none;
+    /* Hilangkan border jika ada */
+    transition: all 0.2s ease-in-out;
+    /* Transisi untuk hover */
+}
+
+#profileDropdown.btn:hover {
+    transform: translateY(-2px);
+    /* Efek sedikit terangkat saat dihover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+    /* Bayangan lebih kuat saat hover */
+}
+
+/* Pastikan warna ikon putih di atas background biru */
+#profileDropdown.btn i,
+#profileDropdown.btn span {
+    color: white;
+}
+
+.modern-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+/* Buat tampilan kotak checkbox kustom */
+.modern-checkbox .checkmark {
+    position: relative;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-color: #f8f9fa;
+    /* Warna saat tidak dicentang */
+    border: 2px solid #adb5bd;
+    /* Border abu-abu */
+    border-radius: 6px;
+    /* Sudut yang sedikit membulat */
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Buat ikon centang menggunakan pseudo-element (::after) */
+.modern-checkbox .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    /* Sembunyikan secara default */
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Saat checkbox HTML dicentang, ubah tampilan kotak kustom */
+.modern-checkbox input[type="checkbox"]:checked~.checkmark {
+    background-color: #0d6efd;
+    /* Warna biru primer Bootstrap */
+    border-color: #0d6efd;
+}
+
+/* Saat checkbox HTML dicentang, tampilkan ikon centang */
+.modern-checkbox input[type="checkbox"]:checked~.checkmark::after {
+    display: block;
+}
+
+/* Efek hover pada kotak checkbox */
+.modern-checkbox .checkmark:hover {
+    border-color: #0d6efd;
+}
+
+/* Styling untuk seluruh baris tabel agar bisa diklik */
+.table-selectable tbody tr {
+    cursor: pointer;
+    /* Ubah cursor menjadi tangan saat di atas baris */
+}
+
+/* Beri highlight pada baris yang dipilih/tercentang */
+.table-selectable tbody tr.selected {
+    background-color: #cfe2ff !important;
+    /* Warna biru muda Bootstrap */
+    color: #000;
+}
+
+/* Pastikan efek hover tetap terlihat tapi tidak mengalahkan warna selected */
+.table-selectable tbody tr.selected:hover {
+    background-color: #b9d3ff !important;
+}
+
+/* === TIMELINE STYLE UNTUK DETAIL USULAN === */
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 20px;
+    width: 3px;
+    background-color: #e9ecef;
+    border-radius: 3px;
+}
+
+.timeline-item {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border: 3px solid #fff;
+}
+
+.timeline-item.success .timeline-icon {
+    background-color: #198754;
+    /* Warna success */
+    color: #fff;
+}
+
+.timeline-item.process .timeline-icon {
+    background-color: #0d6efd;
+    /* Warna primary */
+    color: #fff;
+}
+
+.timeline-content {
+    margin-left: 60px;
+    padding-top: 5px;
+}
+
+/* === BREADCRUMB STYLING (DIREFACTOR) === */
+.breadcrumb-capsule {
+    background-color: var(--card-bg);
+    /* Warna latar belakang dari card theme */
+    border-radius: 2rem;
+    /* Bentuk kapsul */
+    box-shadow: var(--card-shadow);
+    /* Shadow halus */
+    padding: 0.5rem 1.25rem;
+    /* Padding internal kapsul */
+    display: flex;
+    /* Gunakan flexbox untuk menengahkan konten */
+    align-items: center;
+    /* Pusat vertikal */
+    min-height: 48px;
+    /* Pastikan tinggi konsisten dengan elemen lain di navbar */
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    /* Hilangkan margin bawah default Bootstrap */
+    padding: 0;
+    /* Hilangkan padding bawaan */
+    background-color: transparent;
+    font-size: 0.9em;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: var(--bs-primary);
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--bs-primary);
+    /* Konsisten dengan warna primary */
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--bs-secondary);
+    font-weight: 500;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: var(--bs-secondary);
+    content: ">";
+    padding-right: 0.5rem;
+    padding-left: 0.25rem;
+}
+
+/* Penyesuaian untuk dark mode */
+[data-bs-theme="dark"] .breadcrumb-item a {
+    color: var(--bs-info);
+}
+
+[data-bs-theme="dark"] .breadcrumb-item.active {
+    color: var(--bs-light);
+}
+
+[data-bs-theme="dark"] .breadcrumb-item+.breadcrumb-item::before {
+    color: var(--bs-secondary);
+}
+
+/* --- Responsive adjustment for breadcrumb --- */
+@media (max-width: 767.98px) {
+    .breadcrumb-capsule {
+        display: none;
+        /* Sembunyikan breadcrumb di layar sangat kecil */
+    }
+}
+
+.treeview ul {
+    list-style-type: none;
+    padding-left: 0;
+    /* Remove default padding for root ul */
+    margin-bottom: 0;
+}
+
+.treeview ul ul {
+    /* Indent for nested lists */
+    padding-left: var(--indent-size);
+}
+
+.treeview li {
+    position: relative;
+    margin-bottom: 2px;
+    /* Optional: Add a subtle border for visual separation */
+    /* border-bottom: 1px dashed var(--border-color); */
+    /* padding-bottom: 2px; */
+}
+
+/* .treeview li:last-child {
+            border-bottom: none;
+        } */
+
+.treeview li .node-content {
+    display: flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--dark-text);
+    border-radius: 5px;
+    transition: background-color var(--transition-speed) ease-in-out,
+        box-shadow var(--transition-speed) ease-in-out;
+    cursor: pointer;
+    position: relative;
+    /* For the focus indicator */
+    z-index: 1;
+    /* Ensure it's above potential line connectors */
+}
+
+.treeview li .node-content:hover {
+    background-color: var(--hover-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.treeview li .node-content:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    background-color: var(--hover-bg);
+}
+
+.treeview li .toggler {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    color: var(--secondary-color);
+    transition: transform var(--transition-speed) ease-in-out;
+    font-size: 0.8em;
+}
+
+.treeview li .toggler.collapsed {
+    transform: rotate(0deg);
+    /* Right arrow */
+}
+
+.treeview li .toggler.expanded {
+    transform: rotate(90deg);
+    /* Down arrow */
+}
+
+.treeview li .toggler::before {
+    content: "\f0da";
+    /* Font Awesome right arrow */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.treeview li .toggler.expanded::before {
+    content: "\f0d7";
+    /* Font Awesome down arrow */
+}
+
+/* --- Smooth Collapse/Expand Transition --- */
+.treeview ul.children {
+    display: block;
+    /* Important for max-height transition */
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height var(--transition-speed) ease-in-out;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.treeview ul.children.show {
+    max-height: 1000px;
+    /* Adjust a large enough value for your content */
+    padding-top: 5px;
+    /* Add some padding back for spacing */
+    padding-bottom: 5px;
+    /* To make the padding transition smooth, you might need a wrapper or more complex CSS */
+}
+
+/* Styling for different levels (optional, for visual hierarchy) */
+.treeview .es1-node>.node-content {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.treeview .es2-node>.node-content {
+    color: #28a745;
+}
+
+.treeview .es3-node>.node-content {
+    color: #6c757d;
+}
+
+/* Icon for different levels */
+.treeview .es1-node>.node-content::before {
+    content: "\f114";
+    /* Folder icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.treeview .es2-node>.node-content::before {
+    content: "\f07b";
+    /* Folder-open icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 8px;
+    color: #28a745;
+}
+
+.treeview .es3-node>.node-content::before {
+    content: "\f0c5";
+    /* Files icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 8px;
+    color: var(--secondary-color);
+}
+
+/* Remove default content icon if toggler is present for children */
+.treeview li[data-has-children="true"]>.node-content::before {
+    content: "";
+    /* No specific icon if it's a parent node */
+    margin-right: 0;
+}
+
+.bg-light-info {
+    background-color: #eaf6ff;
+    border-radius: 8px;
+}
+
+.text-dark-50 {
+    color: #6c757d;
+}
+
+
+/* Soft Icon Circle Styling */
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+/* Warna Soft Icons */
+.soft-primary {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+}
+
+.soft-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+.soft-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+.soft-info {
+    background-color: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+}
+
+.soft-secondary {
+    background-color: rgba(108, 117, 125, 0.1);
+    color: #6c757d;
+}
+
+/* KUSTOM: Vertikal Progress Bar Container */
+.vertical-progress-container {
+    height: 100%;
+    width: 10px;
+    position: relative;
+    transform: rotate(180deg);
+    /* Balik 180 derajat untuk mengisi dari bawah */
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.progress-vertical {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.progress-bar-vertical {
+    width: 100%;
+    transition: height 0.6s ease;
+}
+
+.text-xxs {
+    font-size: 0.7rem;
+}
+
+/* Custom height for Nilai Pengawasan card to ensure equal height in grid */
+.nilai-pengawasan-card {
+    min-height: 250px;
+}

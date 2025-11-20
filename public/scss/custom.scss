@@ -1,0 +1,21 @@
+// public/scss/custom.scss
+
+// 1. Impor variabel kustom kita TERLEBIH DAHULU
+@import "variables";
+
+// 2. Impor seluruh pustaka Bootstrap Sass
+// Anda perlu mengunduh source code Bootstrap atau menggunakan path dari node_modules jika menginstal via npm.
+// Cara termudah: Gunakan @import dari CDN (memerlukan Live Sass Compiler yang mendukungnya)
+// atau impor file Bootstrap Sass yang sudah Anda unduh.
+
+// Asumsi Anda mengunduh Bootstrap dan menaruhnya di public/bootstrap-5.3.2/scss/
+@import "../bootstrap-5.3.2/scss/bootstrap";
+
+// 3. (Opsional) Tambahkan gaya kustom Anda sendiri di sini
+// Gaya ini akan bisa menggunakan semua variabel Bootstrap ($primary, $secondary, dll.)
+// Contoh:
+.custom-header {
+    background-color: $primary;
+    color: white;
+    padding: 1rem;
+}

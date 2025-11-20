@@ -1,0 +1,88 @@
+/* public/css/custom_datatable.css */
+
+/* ... (CSS sebelumnya tidak berubah) ... */
+
+/* ========================================================== */
+/* == STYLING BARU UNTUK HALAMAN DETAIL USULAN ELEGAN == */
+/* ========================================================== */
+
+/* Memberi efek transisi pada kartu saat di-hover */
+.card-detail {
+    transition: all 0.3s ease;
+    border: 1px solid #e3e6f0;
+    /* Border yang sangat halus */
+}
+
+.card-detail:hover {
+    transform: translateY(-5px);
+    /* Sedikit terangkat */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+    /* Bayangan yang lebih jelas */
+}
+
+/* Menyempurnakan Timeline */
+.timeline:before {
+    background-color: #e3e6f0;
+    /* Warna garis yang lebih terang */
+}
+
+.timeline-icon {
+    transition: all 0.3s ease;
+}
+
+.timeline-item.success .timeline-icon {
+    box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.2);
+    /* Efek glow hijau */
+}
+
+.timeline-item.process .timeline-icon {
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.2);
+    /* Efek glow biru */
+    animation: pulse 2s infinite;
+    /* Animasi berdenyut untuk status saat ini */
+}
+
+.timeline-content .text-muted {
+    font-size: 0.85rem;
+}
+
+/* Animasi pulse untuk status saat ini */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+    }
+}
+
+/* Styling untuk daftar petugas */
+.list-group-item .fw-bold {
+    color: #333;
+}
+
+/* Styling tabel item agar lebih bersih */
+.table-detail tbody tr:last-child td {
+    border-bottom: none;
+    /* Hilangkan border di baris terakhir tabel */
+}
+
+.table-detail th {
+    font-weight: 500;
+}
+
+/* Styling khusus untuk catatan penolakan di dalam tabel */
+.rejection-note {
+    font-size: 0.8rem;
+    color: #e74a3b;
+    /* Warna merah (danger) */
+    font-style: italic;
+    display: block;
+    /* Tampilkan di baris baru */
+    margin-top: 4px;
+}
